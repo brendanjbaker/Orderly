@@ -1,0 +1,45 @@
+#!/bin/bash
+
+set -e
+
+usage() {
+	echo "usage: sam project <command> [<arguments>]"
+	echo
+	echo "Supported commands are:"
+	echo "create    Create a new project"
+	echo "destroy   Destroy a project"
+	echo "exists    Check whether a project exists"
+	echo "list      List projects"
+	echo
+}
+
+if [ $# -lt 1 ]; then
+	usage >&2
+	exit 1
+fi
+
+command=$1
+
+case $command in
+	create)
+		./sam-project-create "${@:2}"
+		;;
+
+	destroy)
+		./sam-project-destroy "${@:2}"
+		;;
+
+	exists)
+		./sam-project-exists "${@:2}"
+		;;
+
+	list)
+		./sam-project-list "${@:2}"
+		;;
+
+	*)
+		echo "sam: '$command' is not a valid command." >&2
+		echo >&2
+		usage >&2
+		exit 1
+esac

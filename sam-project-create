@@ -1,0 +1,13 @@
+#!/bin/bash
+
+set -e
+
+./usage 1 "sam project create <project-id>" "$@"
+
+project_id=$1
+
+if ./sam-project-exists $project_id; then
+	./error "sam: project '$project_id' already exists."
+fi
+
+mkdir -p ~/.sam/project/$project_id

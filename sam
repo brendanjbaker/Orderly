@@ -7,6 +7,7 @@ usage() {
 	echo
 	echo "Supported commands are:"
 	echo "install       Installs sam to /usr/local/bin"
+	echo "project       Manage projects"
 	echo "uninstall     Uninstalls sam from /usr/local/bin"
 	echo
 }
@@ -22,6 +23,10 @@ cd $(dirname $(readlink -f $0))
 case $command in
 	install)
 		./sam-install "${@:2}"
+		;;
+
+	project)
+		./sam-project "${@:2}"
 		;;
 
 	uninstall)
