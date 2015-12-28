@@ -6,10 +6,10 @@ usage() {
 	echo "usage: sam [--version] <command> [<arguments>]"
 	echo
 	echo "Supported commands are:"
-	echo "asset         Manage assets"
-	echo "install       Installs sam to /usr/local/bin"
-	echo "project       Manage projects"
-	echo "uninstall     Uninstalls sam from /usr/local/bin"
+	echo "asset       Manage assets"
+	echo "install     Installs sam to /usr/local/bin"
+	echo "project     Manage projects"
+	echo "uninstall   Uninstalls sam from /usr/local/bin"
 	echo
 }
 
