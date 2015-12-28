@@ -19,10 +19,10 @@ cd $project_path
 git remote add origin $repository
 git fetch --quiet
 
-if ! git branch -r | grep master; then
+if [ $(git branch -r | wc -w) -eq 0 ]; then
 	git commit --quiet --allow-empty -m "Create project."
 else
-	git pull origin master --quiet
+	git pull origin master --quiet > /dev/null
 fi
 
 git push origin master --quiet
