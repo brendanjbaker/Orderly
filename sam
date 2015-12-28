@@ -2,7 +2,10 @@
 
 set -e
 
+version=0.1.1
+
 usage() {
+	echo "Software Asset Management, version $version"
 	echo "usage: sam [--help] [--version] <command> [<arguments>]"
 	echo
 	echo "Supported commands are:"
