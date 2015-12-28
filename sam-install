@@ -8,5 +8,5 @@ bin_path=/usr/local/bin/sam
 if [ -h $bin_path ]; then
 	./warn "sam: Already installed"
 else
-	sudo ln -s $script_path /usr/local/bin/sam
+	sudo ln -s $script_path $bin_path
 fi
