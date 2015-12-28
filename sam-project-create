@@ -6,8 +6,13 @@ set -e
 
 project_id=$1
 
+project_path=$(./sam-path $project_id)
+
 if ./sam-project-exists $project_id; then
 	./error "sam: project '$project_id' already exists."
 fi
 
-mkdir -p ~/.sam/project/$project_id
+mkdir -p $project_path
+cd $project_path
+git init --quiet
+cd - > /dev/null

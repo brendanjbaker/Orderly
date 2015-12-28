@@ -1,0 +1,13 @@
+#!/bin/bash
+
+set -e
+
+./usage 2 "sam-write <path> <message>" "$@"
+
+path=$1
+message=$2
+
+cd $(dirname $path)
+git add $path
+git commit --quiet -m "$message"
+cd - > /dev/null
