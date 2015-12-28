@@ -3,7 +3,7 @@
 set -e
 
 usage() {
-	echo "usage: sam [--version] <command> [<arguments>]"
+	echo "usage: sam [--help] [--version] <command> [<arguments>]"
 	echo
 	echo "Supported commands are:"
 	echo "asset       Manage assets"
@@ -36,6 +36,10 @@ case $command in
 
 	uninstall)
 		./sam-uninstall "${@:2}"
+		;;
+
+	--help)
+		usage
 		;;
 
 	--version)
