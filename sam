@@ -6,6 +6,7 @@ usage() {
 	echo "usage: sam [--version] <command> [<arguments>]"
 	echo
 	echo "Supported commands are:"
+	echo "asset         Manage assets"
 	echo "install       Installs sam to /usr/local/bin"
 	echo "project       Manage projects"
 	echo "uninstall     Uninstalls sam from /usr/local/bin"
@@ -21,6 +22,10 @@ command=$1
 cd $(dirname $(readlink -f $0))
 
 case $command in
+	asset)
+		./sam-asset "${@:2}"
+		;;
+
 	install)
 		./sam-install "${@:2}"
 		;;
