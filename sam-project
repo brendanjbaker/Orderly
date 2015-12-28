@@ -1,0 +1,60 @@
+#!/bin/bash
+
+set -e
+
+usage() {
+	echo "usage: sam project <command> [<arguments>]"
+	echo
+	echo "Supported commands are:"
+	echo "connect        Connect a project to a repository"
+	echo "create         Create a new project"
+	echo "destroy        Destroy a project"
+	echo "disconnect     Disconnect a project from a repository"
+	echo "exists         Check whether a project exists"
+	echo "is-connected   Check whether a project is connected to a repository"
+	echo "list           List projects"
+	echo
+}
+
+if [ $# -lt 1 ]; then
+	usage >&2
+	exit 1
+fi
+
+command=$1
+
+case $command in
+	connect)
+		./sam-project-connect "${@:2}"
+		;;
+
+	create)
+		./sam-project-create "${@:2}"
+		;;
+
+	destroy)
+		./sam-project-destroy "${@:2}"
+		;;
+
+	disconnect)
+		./sam-project-disconnect "${@:2}"
+		;;
+
+	exists)
+		./sam-project-exists "${@:2}"
+		;;
+
+	is-connected)
+		./sam-project-is-connected "${@:2}"
+		;;
+
+	list)
+		./sam-project-list "${@:2}"
+		;;
+
+	*)
+		echo "sam: '$command' is not a valid command." >&2
+		echo >&2
+		usage >&2
+		exit 1
+esac

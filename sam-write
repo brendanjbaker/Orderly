@@ -1,0 +1,24 @@
+#!/bin/bash
+
+set -e
+
+./usage 2 "sam-write <path> <message>" "$@"
+
+path=$1
+message=$2
+
+cd $(dirname $path)
+git add $path
+git commit --quiet -m "$message"
+
+if [ $(git remote | wc -w) -gt 0 ]; then
+	git fetch --quiet
+
+	if [ $(git branch -r | wc -w) -gt 0 ]; then
+		git pull origin master --quiet > /dev/null
+	fi
+
+	git push origin master --quiet
+fi
+
+cd - > /dev/null

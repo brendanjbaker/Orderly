@@ -1,0 +1,13 @@
+#!/bin/bash
+
+set -e
+
+./usage 0 "sam-project-list" "$@"
+
+project_path=$(./sam-path)
+
+if [ ! -d "$project_path" ]; then
+	exit
+fi
+
+ls -1 $project_path

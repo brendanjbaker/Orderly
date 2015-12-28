@@ -1,0 +1,50 @@
+#!/bin/bash
+
+set -e
+
+usage() {
+	echo "usage: sam asset <command> [<arguments>]"
+	echo
+	echo "Supported commands are:"
+	echo "create    Create a new asset"
+	echo "destroy   Destroy an asset"
+	echo "exists    Check whether an asset exists"
+	echo "get       Get an asset"
+	echo "list      List assets"
+	echo
+}
+
+if [ $# -lt 1 ]; then
+	usage $1 >&2
+	exit 1
+fi
+
+command=$1
+
+case $command in
+	create)
+		./sam-asset-create "${@:2}"
+		;;
+
+	destroy)
+		./sam-asset-destroy "${@:2}"
+		;;
+
+	exists)
+		./sam-asset-exists "${@:2}"
+		;;
+
+	get)
+		./sam-asset-get "${@:2}"
+		;;
+
+	list)
+		./sam-asset-list "${@:2}"
+		;;
+
+	*)
+		echo "sam: '$command' is not a valid command." >&2
+		echo >&2
+		usage >&2
+		exit 1
+esac
