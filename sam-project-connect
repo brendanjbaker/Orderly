@@ -1,0 +1,28 @@
+#!/bin/bash
+
+set -e
+
+./usage 2 "sam project connect <project-id> <repository>" "$@"
+
+project_id=$1
+repository=$2
+
+./sam-project-exists $project_id
+
+if ./sam-project-is-connected $project_id; then
+	./error "sam: project already connected."
+fi
+
+project_path=$(./sam-path $project_id)
+
+cd $project_path
+git remote add origin $repository
+git fetch --quiet
+
+if ! git branch -r | grep master; then
+	git commit --quiet --allow-empty -m "Create project."
+else
+	git pull origin master --quiet
+fi
+
+git push origin master --quiet

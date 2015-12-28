@@ -2,9 +2,10 @@
 
 set -e
 
-./usage 1 "sam project create <project-id>" "$@"
+./usage 1 "sam project create <project-id> [repository]" "$@"
 
 project_id=$1
+repository=$2
 
 project_path=$(./sam-path $project_id)
 
@@ -16,3 +17,7 @@ mkdir -p $project_path
 cd $project_path
 git init --quiet
 cd - > /dev/null
+
+if [ ! -z "$repository" ]; then
+	./sam-project-connect $project_id $repository
+fi

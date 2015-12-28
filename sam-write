@@ -10,4 +10,15 @@ message=$2
 cd $(dirname $path)
 git add $path
 git commit --quiet -m "$message"
+
+if [ $(git remote | wc -w) -gt 0 ]; then
+	git fetch --quiet
+
+	if git branch -r | grep master; then
+		git pull origin master
+	fi
+
+	git push origin master
+fi
+
 cd - > /dev/null
