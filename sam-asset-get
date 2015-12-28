@@ -10,7 +10,7 @@ asset_id=$3
 
 ./sam-project-assert-exists $project_id
 
-if ! ./sam-exists $project_id $asset_type $asset_id; then
+if ! ./sam-asset-exists $project_id $asset_type $asset_id; then
 	./error "sam: '$asset_id' asset does not exist."
 fi
 
