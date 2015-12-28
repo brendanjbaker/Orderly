@@ -50,8 +50,6 @@ case $command in
 		;;
 
 	*)
-		echo "sam: '$command' is not a sam command." >&2
-		echo >&2
-		usage >&2
-		exit 1
+		./error "sam: '$command' command unrecognized. Run 'sam --help' for usage."
+		;;
 esac
