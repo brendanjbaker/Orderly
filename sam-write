@@ -14,11 +14,11 @@ git commit --quiet -m "$message"
 if [ $(git remote | wc -w) -gt 0 ]; then
 	git fetch --quiet
 
-	if git branch -r | grep master; then
-		git pull origin master
+	if [ $(git branch -r | wc -w) -gt 0 ]; then
+		git pull origin master --quiet > /dev/null
 	fi
 
-	git push origin master
+	git push origin master --quiet
 fi
 
 cd - > /dev/null
