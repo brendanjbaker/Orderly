@@ -46,8 +46,7 @@ case $command in
 		;;
 
 	--version)
-		echo "sam version 0.1.0"
-		exit 0
+		echo "sam $version"
 		;;
 
 	*)
