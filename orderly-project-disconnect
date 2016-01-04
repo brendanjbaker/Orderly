@@ -2,13 +2,14 @@
 
 set -e
 
-./usage 1 "sam project disconnect <project-id>" "$@"
+./usage 1 "orderly project disconnect <project-id>" "$@"
 
 project_id=$1
 
-if ! ./sam-project-is-connected $project_id; then
-	./error "sam: project already disconnected."
+if ! ./orderly-project-is-connected $project_id; then
+	./error "orderly: project already disconnected."
 fi
 
-cd $(./sam-path $project_id)
+cd $(./orderly-path $project_id)
 git remote remove origin
+

@@ -5,14 +5,14 @@ set -e
 version=0.2
 
 usage() {
-	echo "Software Asset Manager, version $version"
-	echo "usage: sam [--help] [--version] <command> [<arguments>]"
+	echo "Orderly Software Asset Manager, version $version"
+	echo "usage: orderly [--help] [--version] <command> [<arguments>]"
 	echo
 	echo "Supported commands are:"
 	echo "asset       Manage assets"
-	echo "install     Installs sam to /usr/local/bin"
+	echo "install     Installs orderly to /usr/local/bin"
 	echo "project     Manage projects"
-	echo "uninstall   Uninstalls sam from /usr/local/bin"
+	echo "uninstall   Uninstalls orderly from /usr/local/bin"
 	echo
 }
 
@@ -26,19 +26,19 @@ cd $(dirname $(readlink -f $0))
 
 case $command in
 	asset)
-		./sam-asset "${@:2}"
+		./orderly-asset "${@:2}"
 		;;
 
 	install)
-		./sam-install "${@:2}"
+		./orderly-install "${@:2}"
 		;;
 
 	project)
-		./sam-project "${@:2}"
+		./orderly-project "${@:2}"
 		;;
 
 	uninstall)
-		./sam-uninstall "${@:2}"
+		./orderly-uninstall "${@:2}"
 		;;
 
 	--help)
@@ -46,10 +46,11 @@ case $command in
 		;;
 
 	--version)
-		echo "sam $version"
+		echo "orderly $version"
 		;;
 
 	*)
-		./error "sam: '$command' command unrecognized. Run 'sam --help' for usage."
+		./error "orderly: '$command' command unrecognized. Use '--help' for usage."
 		;;
 esac
+

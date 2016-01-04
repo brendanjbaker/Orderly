@@ -2,10 +2,11 @@
 
 set -e
 
-./usage 1 "sam-project-assert-exists <project-id>" "$@"
+./usage 1 "orderly-project-assert-exists <project-id>" "$@"
 
 project_id=$1
 
-if ! ./sam-project-exists $project_id; then
-	./error "sam: project '$project_id' does not exist."
+if ! ./orderly-project-exists $project_id; then
+	./error "orderly: project '$project_id' does not exist."
 fi
+

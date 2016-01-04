@@ -2,20 +2,20 @@
 
 set -e
 
-./usage 3 "sam asset create <project-id> <asset-type> <asset-id>" "$@"
+./usage 3 "orderly asset create <project-id> <asset-type> <asset-id>" "$@"
 
 project_id=$1
 asset_type=$2
 asset_id=$3
 
-./sam-project-assert-exists $project_id
+./orderly-project-assert-exists $project_id
 
-if ./sam-asset-exists $project_id $asset_type $asset_id; then
-	./error "sam: '$asset_id' asset already exists."
+if ./orderly-asset-exists $project_id $asset_type $asset_id; then
+	./error "orderly: '$asset_id' asset already exists."
 fi
 
 data=$(cat)
-asset_path=$(./sam-path $project_id $asset_type $asset_id)
+asset_path=$(./orderly-path $project_id $asset_type $asset_id)
 
 if [ ! -d $(dirname $asset_path) ]; then
 	mkdir -p $(dirname $asset_path)
@@ -23,4 +23,5 @@ fi
 
 echo "$data" > $asset_path
 
-./sam-write $asset_path "Create $asset_type $asset_id."
+./orderly-write $asset_path "Create $asset_type $asset_id."
+

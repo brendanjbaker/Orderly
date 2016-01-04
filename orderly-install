@@ -2,11 +2,12 @@
 
 set -e
 
-script_path=$(readlink -f ./sam)
-bin_path=/usr/local/bin/sam
+script_path=$(readlink -f ./orderly)
+bin_path=/usr/local/bin/orderly
 
 if [ -h $bin_path ]; then
-	./warn "sam: Already installed"
+	./warn "orderly: Already installed"
 else
 	sudo ln -s $script_path $bin_path
 fi
+

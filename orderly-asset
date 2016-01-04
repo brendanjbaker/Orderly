@@ -3,7 +3,7 @@
 set -e
 
 usage() {
-	echo "usage: sam asset <command> [<arguments>]"
+	echo "usage: orderly asset <command> [<arguments>]"
 	echo
 	echo "Supported commands are:"
 	echo "create    Create a new asset"
@@ -23,28 +23,29 @@ command=$1
 
 case $command in
 	create)
-		./sam-asset-create "${@:2}"
+		./orderly-asset-create "${@:2}"
 		;;
 
 	destroy)
-		./sam-asset-destroy "${@:2}"
+		./orderly-asset-destroy "${@:2}"
 		;;
 
 	exists)
-		./sam-asset-exists "${@:2}"
+		./orderly-asset-exists "${@:2}"
 		;;
 
 	get)
-		./sam-asset-get "${@:2}"
+		./orderly-asset-get "${@:2}"
 		;;
 
 	list)
-		./sam-asset-list "${@:2}"
+		./orderly-asset-list "${@:2}"
 		;;
 
 	*)
-		echo "sam: '$command' is not a valid command." >&2
+		echo "orderly: '$command' is not a valid command." >&2
 		echo >&2
 		usage >&2
 		exit 1
 esac
+

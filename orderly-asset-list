@@ -2,17 +2,18 @@
 
 set -e
 
-./usage 2 "sam-asset-list <project-id> <asset-type>" "$@"
+./usage 2 "orderly-asset-list <project-id> <asset-type>" "$@"
 
 project_id=$1
 asset_type=$2
 
-./sam-project-assert-exists $project_id
+./orderly-project-assert-exists $project_id
 
-asset_type_path=$(./sam-path $project_id $asset_type)
+asset_type_path=$(./orderly-path $project_id $asset_type)
 
 if [ ! -d $asset_type_path ]; then
 	exit
 fi
 
 ls -1 $asset_type_path
+

@@ -2,12 +2,13 @@
 
 set -e
 
-./usage 0 "sam-project-list" "$@"
+./usage 0 "orderly-project-list" "$@"
 
-project_path=$(./sam-path)
+project_path=$(./orderly-path)
 
 if [ ! -d "$project_path" ]; then
 	exit
 fi
 
 ls -1 $project_path
+

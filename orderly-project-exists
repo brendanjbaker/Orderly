@@ -2,10 +2,11 @@
 
 set -e
 
-./usage 1 "sam project exists <project-id>" "$@"
+./usage 1 "orderly project exists <project-id>" "$@"
 
 project_id=$1
 
-if [ ! -d ~/.sam/project/$project_id ]; then
+if [ ! -d ~/.orderly/project/$project_id ]; then
 	exit 1
 fi
+

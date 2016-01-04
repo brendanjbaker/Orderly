@@ -2,7 +2,7 @@
 
 set -e
 
-./usage 2 "sam-write <path> <message>" "$@"
+./usage 2 "orderly-write <path> <message>" "$@"
 
 path=$1
 message=$2
@@ -22,3 +22,4 @@ if [ $(git remote | wc -w) -gt 0 ]; then
 fi
 
 cd - > /dev/null
+

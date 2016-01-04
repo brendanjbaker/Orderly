@@ -2,15 +2,15 @@
 
 set -e
 
-./usage 1 "sam project create <project-id> [repository]" "$@"
+./usage 1 "orderly project create <project-id> [repository]" "$@"
 
 project_id=$1
 repository=$2
 
-project_path=$(./sam-path $project_id)
+project_path=$(./orderly-path $project_id)
 
-if ./sam-project-exists $project_id; then
-	./error "sam: project '$project_id' already exists."
+if ./orderly-project-exists $project_id; then
+	./error "orderly: project '$project_id' already exists."
 fi
 
 mkdir -p $project_path
@@ -19,5 +19,6 @@ git init --quiet
 cd - > /dev/null
 
 if [ ! -z "$repository" ]; then
-	./sam-project-connect $project_id $repository
+	./orderly-project-connect $project_id $repository
 fi
+

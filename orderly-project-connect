@@ -2,18 +2,18 @@
 
 set -e
 
-./usage 2 "sam project connect <project-id> <repository>" "$@"
+./usage 2 "orderly project connect <project-id> <repository>" "$@"
 
 project_id=$1
 repository=$2
 
-./sam-project-exists $project_id
+./orderly-project-exists $project_id
 
-if ./sam-project-is-connected $project_id; then
-	./error "sam: project already connected."
+if ./orderly-project-is-connected $project_id; then
+	./error "orderly: project already connected."
 fi
 
-project_path=$(./sam-path $project_id)
+project_path=$(./orderly-path $project_id)
 
 cd $project_path
 git remote add origin $repository
@@ -26,3 +26,4 @@ else
 fi
 
 git push origin master --quiet
+
