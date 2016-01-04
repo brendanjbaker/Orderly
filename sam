@@ -2,8 +2,11 @@
 
 set -e
 
+version=0.2
+
 usage() {
-	echo "usage: sam [--version] <command> [<arguments>]"
+	echo "Software Asset Manager, version $version"
+	echo "usage: sam [--help] [--version] <command> [<arguments>]"
 	echo
 	echo "Supported commands are:"
 	echo "asset       Manage assets"
@@ -38,14 +41,15 @@ case $command in
 		./sam-uninstall "${@:2}"
 		;;
 
+	--help)
+		usage
+		;;
+
 	--version)
-		echo "sam version 0.1.0"
-		exit 0
+		echo "sam $version"
 		;;
 
 	*)
-		echo "sam: '$command' is not a sam command." >&2
-		echo >&2
-		usage >&2
-		exit 1
+		./error "sam: '$command' command unrecognized. Run 'sam --help' for usage."
+		;;
 esac
