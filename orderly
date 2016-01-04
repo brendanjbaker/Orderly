@@ -1,0 +1,56 @@
+#!/bin/bash
+
+set -e
+
+version=0.3
+
+usage() {
+	echo "Orderly Software Asset Manager, version $version"
+	echo "usage: orderly [--help] [--version] <command> [<arguments>]"
+	echo
+	echo "Supported commands are:"
+	echo "asset       Manage assets"
+	echo "install     Installs orderly to /usr/local/bin"
+	echo "project     Manage projects"
+	echo "uninstall   Uninstalls orderly from /usr/local/bin"
+	echo
+}
+
+if [ $# -lt 1 ]; then
+	usage >&2
+	exit 1
+fi
+
+command=$1
+cd $(dirname $(readlink -f $0))
+
+case $command in
+	asset)
+		./orderly-asset "${@:2}"
+		;;
+
+	install)
+		./orderly-install "${@:2}"
+		;;
+
+	project)
+		./orderly-project "${@:2}"
+		;;
+
+	uninstall)
+		./orderly-uninstall "${@:2}"
+		;;
+
+	--help)
+		usage
+		;;
+
+	--version)
+		echo "orderly $version"
+		;;
+
+	*)
+		./error "orderly: '$command' command unrecognized. Use '--help' for usage."
+		;;
+esac
+

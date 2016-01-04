@@ -2,11 +2,12 @@
 
 set -e
 
-bin_path=/usr/local/bin/sam
+bin_path=/usr/local/bin/orderly
 
 if [ -h $bin_path ]; then
 	sudo rm $bin_path
 else
-	echo "sam: Not installed" >&2
+	echo "orderly: Not installed" >&2
 	echo >&2
 fi
+

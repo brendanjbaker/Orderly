@@ -1,0 +1,12 @@
+#!/bin/bash
+
+set -e
+
+./usage 1 "orderly project exists <project-id>" "$@"
+
+project_id=$1
+
+if [ ! -d ~/.orderly/project/$project_id ]; then
+	exit 1
+fi
+

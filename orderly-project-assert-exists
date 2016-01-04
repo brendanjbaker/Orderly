@@ -1,0 +1,12 @@
+#!/bin/bash
+
+set -e
+
+./usage 1 "orderly-project-assert-exists <project-id>" "$@"
+
+project_id=$1
+
+if ! ./orderly-project-exists $project_id; then
+	./error "orderly: project '$project_id' does not exist."
+fi
+

@@ -1,0 +1,12 @@
+#!/bin/bash
+
+set -e
+
+./usage 1 "orderly project destroy <project-id>" "$@"
+
+project_id=$1
+
+./orderly-project-assert-exists $project_id
+
+rm -fr ~/.orderly/project/$project_id
+

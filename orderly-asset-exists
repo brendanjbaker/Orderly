@@ -1,0 +1,18 @@
+#!/bin/bash
+
+set -e
+
+./usage 3 "orderly-asset-exists <project-id> <asset-type> <asset-id>" "$@"
+
+project_id=$1
+asset_type=$2
+asset_id=$3
+
+./orderly-project-assert-exists $project_id
+
+asset_path=$(./orderly-path $project_id $asset_type $asset_id)
+
+if [ ! -f $asset_path ]; then
+	exit 1
+fi
+

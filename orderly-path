@@ -1,0 +1,22 @@
+#!/bin/bash
+
+set -e
+
+./usage 0 "orderly-path <project-id> <asset-type> [<asset-id>]" "$@"
+
+project_id=$1
+asset_type=$2
+asset_id=$3
+
+orderly_home=~/.orderly
+
+if [ $# -eq 0 ]; then
+	echo "$orderly_home/project"
+elif [ $# -eq 1 ]; then
+	echo "$orderly_home/project/$project_id"
+elif [ $# -eq 2 ]; then
+	echo "$orderly_home/project/$project_id/$asset_type"
+else
+	echo "$orderly_home/project/$project_id/$asset_type/$asset_id"
+fi
+

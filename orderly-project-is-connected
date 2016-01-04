@@ -1,0 +1,17 @@
+#!/bin/bash
+
+set -e
+
+./usage 1 "orderly project is-connected <project-id>" "$@"
+
+project_id=$1
+
+./orderly-project-exists $project_id
+
+project_path=$(./orderly-path $project_id)
+
+cd $project_path
+if [ $(git remote | wc -w) -eq 0 ]; then
+	exit 1
+fi
+
